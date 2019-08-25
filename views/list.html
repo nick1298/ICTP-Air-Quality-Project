@@ -1,0 +1,44 @@
+<h1>Hourly air quality data from a performance monitoring station</h1>
+
+<div class="row">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Filter by Suburb</span>
+        </div>
+        <input ng-model="findSuburb" placeholder="Enter suburb name" type="text">
+    </div>
+</div>
+
+<div class="row">
+    <h4>List has
+        {{result.length}}
+        entries.</h4>
+</div>
+<div class="row">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Suburb Name</th>
+                <th class="d-none d-sm-table-cell">Latitude</th>
+				<th class="d-none d-sm-table-cell">Longitude</th>
+				<th class="d-sm-none">Latitude / Longitutde</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="aqEntry in result=(aqData | filter: findSuburb)">
+                <td>{{aqEntry.name}}</td>
+                <td class="d-none d-sm-table-cell">{{aqEntry.gps.latitude}}</td>
+				<td class="d-none d-sm-table-cell">{{aqEntry.gps.longitude}}</td>
+				<td class="d-sm-none">Lat: {{aqEntry.gps.latitude}}<br />Long: {{aqEntry.gps.longitude}}</td>
+                <td>{{aqEntry.date | date:'dd/MM/yyyy'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="alert alert-warning" ng-if="result.length == 0">
+        <h3>No results found.</h3>
+    </div>
+</div>
