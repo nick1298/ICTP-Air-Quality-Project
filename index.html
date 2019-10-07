@@ -3,21 +3,20 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="ie=edge" http-equiv="X-UA-Compatible">
         <base href="/">
 
         <title>Project</title>
         <meta content="Project" name="description">
         <meta content="NichitaMunteanu" name="author">
 
-        <link rel="icon" href="favicon.ico" type="image/x-ico">
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-ico">
+        <link href="favicon.ico" rel="icon" type="image/x-ico">
+        <link href="favicon.ico" rel="shortcut icon" type="image/x-ico">
 
 
-        <link
-        crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css">
+        <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
 
         <script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -25,54 +24,60 @@
 
         <script src="/node_modules/angular/angular.js"></script>
         <script src="/node_modules/angular-route/angular-route.js"></script>
-        
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.1/lodash.js" type="text/javascript"></script>
         <!--API for Google Maps-->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnMBEst2DAUaGHH-gqpDcyimHlUKJmdy4"></script>
-        
+
         <script src="app.js"></script>
 
     </head>
 
-    <body>
-        <div class="header">
+    <body ng-app="myApp">
+        <div class="header d-none d-lg-block">
             <h1 style="text-align:center">ATMOS</h1>
             <p style="text-align:center">Hourly air quality data from the performance monitoring stations</p>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+        <div id="navigation" >
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">ATMOS</a>
+                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <div class="container" ng-app="myApp">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item" ng-class="{'active': $route.current.activetab == 'map'}">
+                            <a class="nav-link" href="/">Map</a>
+                        </li>
+                        <li class="nav-item d-none d-md-block" ng-class="{'active': $route.current.activetab == 'civic'}">
+                            <a class="nav-link" href="/civic">Civic</a>
+                        </li>
+                        <li class="nav-item d-none d-md-block" ng-class="{'active': $route.current.activetab == 'florey'}">
+                            <a class="nav-link" href="/florey">Florey</a>
+                        </li>
+                        <li class="nav-item d-none d-md-block" ng-class="{'active': $route.current.activetab == 'monash'}">
+                            <a class="nav-link" href="/monash">Monash</a>
+                        </li>
+                        <li class="nav-item dropdown d-md-none">
+                            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button">
+                                Stations
+                            </a>
+                            <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+                                <a class="dropdown-item" href="/civic">Civic</a>
+                                <a class="dropdown-item" href="/florey">Florey</a>
+                                <a class="dropdown-item" href="/monash">Monash</a>
+                            </div>
+                        </li>
+                        <li class="nav-item" ng-class="{'active': $route.current.activetab == 'list'}">
+                            <a class="nav-link" href="/list">List</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="container">
             <div autoscroll data-ng-view></div>
         </div>
     </body>

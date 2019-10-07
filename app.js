@@ -1,21 +1,41 @@
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap']);
 
 console.log("step 1");
+
 app.config(function($routeProvider, $locationProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: 'views/list.html',
-			controller: 'listController'
-		})
-		.when('/map', {
 			templateUrl: 'views/map.html',
-			controller: 'mapController'
+			controller: 'mapController',
+			activetab: "map"
+		})
+		.when('/list', {
+			templateUrl: 'views/list.html',
+			controller: 'listController',
+			activetab: "list"
+		})
+		.when('/civic', {
+			templateUrl: 'views/civic.html',
+			controller: 'mapController',
+			activetab: "civic"
+		})
+		.when('/florey', {
+			templateUrl: 'views/florey.html',
+			controller: 'mapController',
+			activetab: "florey"
+		})
+		.when('/monash', {
+			templateUrl: 'views/monash.html',
+			controller: 'mapController',
+			activetab: "monash"
 		})
 		.otherwise({
 			redirectTo: '/'
 		});
 
 		$locationProvider.html5Mode(true);
+}).run(function ($rootScope, $route) {
+    $rootScope.$route = $route;
 });
 
 app.controller('listController', function($scope, $http) {
