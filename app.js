@@ -50,13 +50,14 @@ app.controller('mapController', function($scope, $rootScope, $compile) {
 	console.log("map page");
 	function initialize() {
 		$scope.map = new google.maps.Map(document.getElementById('map'), {
-			zoom: 4,
-			center: {lat: -25.363, lng: 131.044}
+			zoom: 5,
+			center: {lat: -35.290287, lng: 149.126996}
 		});
 
 		$scope.stations = [
-			{ title: 'Sydney', lat: -33.873033, lng: 151.231397 },
-			{ title: 'Melbourne', lat: -37.81228, lng: 144.968355 }
+			{ title: 'Civic', lat: -35.285307, lng: 149.131579 },
+			{ title: 'Florey', lat: -35.220606, lng: 149.043539 },
+			{ title: 'Monash', lat: -35.418302, lng: 149.094018 }
 		];
 
 		$scope.infowindow = new google.maps.InfoWindow({
