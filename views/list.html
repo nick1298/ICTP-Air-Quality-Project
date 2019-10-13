@@ -6,7 +6,7 @@
         <input ng-model="findSuburb" placeholder="Enter suburb name" type="text">
     </div>
 </div>
-
+<hr />
 <div class="row">
     <h4>List has
         {{result.length}}
@@ -20,7 +20,7 @@
                 <th class="d-none d-sm-table-cell">Latitude</th>
 				<th class="d-none d-sm-table-cell">Longitude</th>
 				<th class="d-sm-none">Latitude / Longitutde</th>
-                <th>Date</th>
+                <th>Date / Time</th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +29,7 @@
                 <td class="d-none d-sm-table-cell">{{aqEntry.gps.latitude}}</td>
 				<td class="d-none d-sm-table-cell">{{aqEntry.gps.longitude}}</td>
 				<td class="d-sm-none">Lat: {{aqEntry.gps.latitude}}<br />Long: {{aqEntry.gps.longitude}}</td>
-                <td>{{aqEntry.date | date:'dd/MM/yyyy'}}</td>
+                <td>{{aqEntry.date | date:'dd/MM/yyyy'}}<br />{{aqEntry.time}}</td>
             </tr>
         </tbody>
     </table>

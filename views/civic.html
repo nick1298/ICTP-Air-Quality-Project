@@ -1,1 +1,22 @@
 <h1 class='title'>Civic</h1>
+
+<div id="bar-chart"></div>
+
+<div class="row">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Suburb Name</th>
+					<th>Date / Time</th>
+					<th>aqi_site</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="aqEntry in aqData">
+					<td>{{aqEntry.name}}</td>
+					<td>{{aqEntry.date | date:'dd/MM/yyyy'}}<br />{{aqEntry.time}}</td>
+					<td>{{aqEntry.aqi_site}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
