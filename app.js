@@ -92,7 +92,7 @@ app.controller('mapController', function($scope, $rootScope, $compile) {
 
 app.controller('civicCntrl', ['d3', '$scope', '$http', function(d3, $scope, $http){
 
-	$http.get("https://www.data.act.gov.au/resource/94a5-zqnn.json?$limit=24&name='Civic'").then(function(response) {
+	$http.get("https://www.data.act.gov.au/resource/94a5-zqnn.json?$limit=24&name='Civic'&$order=datetime DESC").then(function(response) {
 		$scope.aqData = response.data;
 
 		$scope.drawBarChart = function(){
