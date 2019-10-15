@@ -2,21 +2,28 @@
 
 <div id="bar-chart"></div>
 
+<pre>Example: {{mode || 'null'}}</pre>
+<div class="btn-group">
+    <label class="btn btn-primary" ng-click="mode = 'aqi_site'; drawBarChart();">For aqi_site</label>
+    <label class="btn btn-primary" ng-click="mode = 'aqi_o3_1hr'; drawBarChart();">For aqi_o3_1hr</label>
+</div>
+
+
 <div class="row">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Suburb Name</th>
-					<th>Date / Time</th>
-					<th>aqi_site</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="aqEntry in aqData">
-					<td>{{aqEntry.name}}</td>
-					<td>{{aqEntry.date | date:'dd/MM/yyyy'}}<br />{{aqEntry.time}}</td>
-					<td>{{aqEntry.aqi_site}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Suburb Name</th>
+                <th>Date / Time</th>
+                <th>aqi_site</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="aqEntry in aqData">
+                <td>{{aqEntry.name}}</td>
+                <td>{{aqEntry.date | date:'dd/MM/yyyy'}}<br />{{aqEntry.time}}</td>
+                <td>{{aqEntry.aqi_site}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
