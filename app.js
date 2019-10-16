@@ -111,8 +111,7 @@ app.controller('civicCntrl', ['d3', '$scope', '$http', function (d3, $scope, $ht
 			var y = d3.scaleLinear()
 				.range([height, 0]);
 			var xAxis = d3.axisBottom()
-				.scale(x)
-				;
+				.scale(x);
 			var yAxis = d3.axisLeft()
 				.scale(y)
 				.ticks(10);
@@ -155,6 +154,12 @@ app.controller('civicCntrl', ['d3', '$scope', '$http', function (d3, $scope, $ht
 						return y(d.aqi_site);
 					} else if ($scope.mode == "aqi_o3_1hr") {
 						return y(d.aqi_o3_1hr);
+					} else if ($scope.mode == "aqi_o3_4hr") { 
+						return y(d.aqi_o3_4hr);
+					} else if ($scope.mode == "aqi_pm2_5") { 
+						return y(d.aqi_pm2_5);
+					} else if ($scope.mode == "aqi_pm10") { 
+						return y(d.aqi_pm10);
 					} else {
 						return y(d.aqi_site);
 					}
@@ -165,6 +170,12 @@ app.controller('civicCntrl', ['d3', '$scope', '$http', function (d3, $scope, $ht
 						return height - y(d.aqi_site);
 					} else if ($scope.mode == "aqi_o3_1hr") {
 						return height - y(d.aqi_o3_1hr);
+					} else if ($scope.mode == "aqi_o3_4hr") {
+						return height - y(d.aqi_o3_4hr);
+					} else if ($scope.mode == "aqi_pm2_5") {
+						return height - y(d.aqi_pm2_5);
+					} else if ($scope.mode == "aqi_pm10") {
+						return height - y(d.aqi_pm10);
 					} else {
 						return height - y(d.aqi_site);
 					}
@@ -173,24 +184,15 @@ app.controller('civicCntrl', ['d3', '$scope', '$http', function (d3, $scope, $ht
 			/* }); */
 
 			function type(d) {
-				//d.aqi_site = +d.aqi_site;
-				//d.aqi_o3_1hr = +d.aqi_o3_1hr;
-				if ($scope.mode == "aqi_site") {
-					d.aqi_site = +d.aqi_site;
-				} else if ($scope.mode == "aqi_o3_1hr") {
-					d.aqi_o3_1hr = +d.aqi_o3_1hr;
-				} else {
-					d.aqi_site = +d.aqi_site;
-				}
-
+				d.aqi_site = +d.aqi_site;
+				d.aqi_o3_1hr = +d.aqi_o3_1hr;
+				d.aqi_o3_4hr = +d.aqi_o3_4hr;
+				d.aqi_pm2_5 = +d.aqi_pm2_5;
+				d.aqi_pm10 = +d.aqi_pm10;
 				return d;
 			}
 
 		}
-		$scope.updateData = function () {
-			d3.select("#bar-chart").remove();
-		}
-
 		$scope.drawBarChart();
 	})
 

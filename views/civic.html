@@ -1,28 +1,46 @@
 <h1 class='title'>Civic</h1>
 
+
 <div id="bar-chart"></div>
-
-<pre>Example: {{mode || 'null'}}</pre>
-<div class="btn-group">
-    <label class="btn btn-primary" ng-click="mode = 'aqi_site'; drawBarChart();">For aqi_site</label>
-    <label class="btn btn-primary" ng-click="mode = 'aqi_o3_1hr'; drawBarChart();">For aqi_o3_1hr</label>
-</div>
-
-
 <div class="row">
+    <pre>Example: {{mode || 'null'}}</pre>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary active" ng-click="mode = 'aqi_site'; drawBarChart();">
+            <input autocomplete="off" checked="checked" name="options" type="radio"> For aqi_site
+        </label>
+        <label class="btn btn-secondary" ng-click="mode = 'aqi_o3_1hr'; drawBarChart();">
+            <input autocomplete="off" name="options" type="radio"> For aqi_o3_1hr
+        </label>
+        <label class="btn btn-secondary" ng-click="mode = 'aqi_o3_4hr'; drawBarChart();">
+            <input autocomplete="off" name="options" type="radio"> For aqi_o3_4hr
+        </label>
+        <label class="btn btn-secondary" ng-click="mode = 'aqi_pm2_5'; drawBarChart();">
+            <input autocomplete="off" name="options" type="radio"> For aqi_pm2_5
+         </label>
+        <label class="btn btn-secondary" ng-click="mode = 'aqi_pm10'; drawBarChart();">
+            <input autocomplete="off" name="options" type="radio"> For aqi_pm10
+        </label>
+    </div>
+
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Suburb Name</th>
                 <th>Date / Time</th>
                 <th>aqi_site</th>
+                <th>aqi_o3_1hr</th>
+                <th>aqi_o3_4hr</th>
+                <th>aqi_pm2_5</th>
+                <th>aqi_pm10</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="aqEntry in aqData">
-                <td>{{aqEntry.name}}</td>
-                <td>{{aqEntry.date | date:'dd/MM/yyyy'}}<br />{{aqEntry.time}}</td>
+                <td>{{aqEntry.date | date:'dd/MM/yyyy'}}<br/>{{aqEntry.time}}</td>
                 <td>{{aqEntry.aqi_site}}</td>
+                <td>{{aqEntry.aqi_o3_1hr}}</td>
+                <td>{{aqEntry.aqi_o3_4hr}}</td>
+                <td>{{aqEntry.aqi_pm2_5}}</td>
+                <td>{{aqEntry.aqi_pm10}}</td>
             </tr>
         </tbody>
     </table>
