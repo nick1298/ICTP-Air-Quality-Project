@@ -17,19 +17,27 @@
         <thead>
             <tr>
                 <th>Suburb Name</th>
-                <th class="d-none d-sm-table-cell">Latitude</th>
-				<th class="d-none d-sm-table-cell">Longitude</th>
-				<th class="d-sm-none">Latitude / Longitutde</th>
                 <th>Date / Time</th>
+                <th>aqi_site</th>
+                <th class="d-none d-md-table-cell">aqi_o3_1hr</th>
+                <th class="d-none d-md-table-cell">aqi_o3_4hr</th>
+                <th class="d-md-none">aqi_o3_1hr / aqi_o3_4hr</th>
+                <th class="d-none d-md-table-cell">aqi_pm2_5</th>
+                <th class="d-none d-md-table-cell">aqi_pm10</th>
+                <th class="d-md-none">aqi_pm2_5 / aqi_pm10</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="aqEntry in result=(aqData | filter: findSuburb)">
                 <td>{{aqEntry.name}}</td>
-                <td class="d-none d-sm-table-cell">{{aqEntry.gps.latitude}}</td>
-				<td class="d-none d-sm-table-cell">{{aqEntry.gps.longitude}}</td>
-				<td class="d-sm-none">Lat: {{aqEntry.gps.latitude}}<br />Long: {{aqEntry.gps.longitude}}</td>
                 <td>{{aqEntry.date | date:'dd/MM/yyyy'}}<br />{{aqEntry.time}}</td>
+                <td>{{aqEntry.aqi_site}}</td>
+                <td class="d-none d-md-table-cell">{{aqEntry.aqi_o3_1hr}}</td>
+                <td class="d-none d-md-table-cell">{{aqEntry.aqi_o3_4hr}}</td>
+                <td class="d-md-none">1hr: {{aqEntry.aqi_o3_1hr}}<br />4hr: {{aqEntry.aqi_o3_4hr}}</td>
+                <td class="d-none d-md-table-cell">{{aqEntry.aqi_pm2_5}}</td>
+                <td class="d-none d-md-table-cell">{{aqEntry.aqi_pm10}}</td>
+                <td class="d-md-none">pm2_5: {{aqEntry.aqi_pm2_5}}<br />pm10: {{aqEntry.aqi_pm10}}</td>
             </tr>
         </tbody>
     </table>
